@@ -1,0 +1,25 @@
+
+<div class="container-fluid my-3">
+
+    <button class="btn btn-primary" (click)="GetCountries()"> Get Countries</button>
+
+
+    <div class="row mt-4">  
+       
+        <div class="col-md-4">
+                <div class="form-group">
+                    <label for="">Get State CSV File</label>  <br>
+                <p-dropdown [options]="CountryItems" [(ngModel)]="SelectedCountryId" autoWidth="false" [style]="{'width':'100%'}"  required filter="true" placeholder="Select Country">
+                    <ng-template let-item pTemplate="selectedItem">
+                        <span style="vertical-align:middle; margin-left: .5em">{{item.label}}</span>
+                    </ng-template>
+                    
+                </p-dropdown>  
+            </div>
+        </div> 
+        <div class="col-md-2">  
+            <br>
+            <button class="btn btn-primary" style="margin-top: 0.5em;"  (click)="GetFileStates();">Get States csv File</button>  
+        </div>  
+    </div> 
+</div>

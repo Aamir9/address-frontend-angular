@@ -1,0 +1,134 @@
+<p-toast></p-toast>
+<div class="container">  
+     <br>  
+    <div class="row mt-4">  
+        <div class="col-md-6"> 
+            <label for="">Upload Countres CSV File</label> 
+            <input class="form-control" accept=".csv" type="file" #fileInput />  
+        </div>  
+        <div class="col-md-6">  
+            <br>
+            <button class="btn btn-primary" style="margin-top: 0.5em;" (click)="uploadFile();">Upload</button>  
+        </div>  
+    </div>  
+     
+
+    <div class="row mt-4">  
+        <div class="col-md-6"> 
+            <label for="">Upload States CSV File</label> 
+            <input class="form-control" accept=".csv" type="file" #fileInputStates />  
+        </div> 
+        <div class="col-md-4">
+                <div class="form-group">
+                <label for="">Seclect Country</label> <br>
+                <p-dropdown [options]="CountryItems" [(ngModel)]="SelectedCountryId" autoWidth="false" [style]="{'width':'100%'}"  required filter="true" placeholder="Select Country">
+                    <ng-template let-item pTemplate="selectedItem">
+                        <span style="vertical-align:middle; margin-left: .5em">{{item.label}}</span>
+                    </ng-template>
+                    
+                </p-dropdown>  
+            </div>
+        </div> 
+        <div class="col-md-2">  
+            <br>
+            <button class="btn btn-primary" style="margin-top: 0.5em;"  (click)="uploadFileStates();">Upload</button>  
+        </div>  
+    </div>  
+
+    <div class="row mt-4">  
+        <div class="col-md-6"> 
+            <label for="">Upload Cities CSV File</label> 
+            <input class="form-control" accept=".csv" type="file" #fileInputCities />  
+        </div>  
+        <div class="col-md-4">
+            <div class="form-group">
+            <label for="">Seclect State </label> <br>
+            <p-dropdown [options]="StateItems" [(ngModel)]="SelectedStateId" autoWidth="false"
+             [style]="{'width':'100%'}"  required filter="true" placeholder="Select State">
+                <ng-template let-item pTemplate="selectedItem">
+                    <span style="vertical-align:middle; margin-left: .5em">{{item.label}}</span>
+                </ng-template>
+                
+            </p-dropdown>  
+        </div>
+    </div> 
+        <div class="col-md-2">  
+            <br>
+            <button class="btn btn-primary" style="margin-top: 0.5em;" style="margin-top: 0.5em;" (click)="uploadFileCities();">Upload</button>  
+        </div>  
+    </div>  
+
+    <div class="row mt-4">  
+        <div class="col-md-6"> 
+            <label for="">Upload PostalCodes CSV File</label> 
+            <input class="form-control" accept=".csv" type="file" #fileInputPostalCodes />  
+        </div>  
+        <div class="col-md-4">
+            <div class="form-group">
+            <label for="">Seclect City </label> <br>
+            <p-dropdown [options]="CityItems" [(ngModel)]="SelectedCityId" autoWidth="false"
+             [style]="{'width':'100%'}"  required filter="true" placeholder="Select City">
+                <ng-template let-item pTemplate="selectedItem">
+                    <span style="vertical-align:middle; margin-left: .5em">{{item.label}}</span>
+                </ng-template>
+                
+            </p-dropdown>  
+        </div>
+    </div> 
+        <div class="col-md-2">  
+                
+      <br>
+            <button class="btn btn-primary" style="margin-top: 0.5em;" (click)="uploadFilePostalCodes();">Upload</button>  
+        </div>  
+    </div>  
+
+    <div class="row mt-4">  
+        <div class="col-md-6"> 
+            <label for="">Upload Streets CSV File</label> 
+            <input class="form-control" accept=".csv" type="file" #fileInputStreets />  
+        </div>  
+        <div class="col-md-4">
+            <div class="form-group">
+            <label for="">Seclect PostalCode </label> <br>
+            <p-dropdown [options]="PostalCodeItems" [(ngModel)]="SelectedPostalCodeId" autoWidth="false"
+             [style]="{'width':'100%'}"  required filter="true" placeholder="Select PostalCode">
+                <ng-template let-item pTemplate="selectedItem">
+                    <span style="vertical-align:middle; margin-left: .5em">{{item.label}}</span>
+                </ng-template>
+                
+            </p-dropdown>  
+        </div>
+    </div> 
+
+        <div class="col-md-2">  
+            <br>
+            <button class="btn btn-primary" style="margin-top: 0.5em;" (click)="uploadFileStreets();">Upload</button>  
+        </div>  
+    </div> 
+    <div class="row mt-4">  
+        <div class="col-md-6"> 
+            <label for="">Upload Houses CSV File</label> 
+            <input class="form-control" accept=".csv" type="file" #fileInputHouses />  
+        </div>  
+        <div class="col-md-4">
+            <div class="form-group">
+            <label for="">Seclect Street </label> <br>
+            <p-dropdown [options]="StreetItems" [(ngModel)]="SelectedStreetId" autoWidth="false"
+             [style]="{'width':'100%'}"  required filter="true" placeholder="Select Street">
+                <ng-template let-item pTemplate="selectedItem">
+                    <span style="vertical-align:middle; margin-left: .5em">{{item.label}}</span>
+                </ng-template>
+                
+            </p-dropdown>  
+        </div>
+    </div> 
+
+        <div class="col-md-2">  
+            <br>
+            <button class="btn btn-primary" style="margin-top: 0.5em;" (click)="uploadFileHoueses();">Upload</button>  
+        </div>  
+    </div>  
+     
+
+ 
+</div>  

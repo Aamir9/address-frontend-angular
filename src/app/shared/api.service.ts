@@ -79,5 +79,25 @@ export class ApiService {
    
   } 
 
+  GetCitiesbyStateId(id) :Observable<City[]>{
+    return this.http.get<City[]>(`${this.url+ '/Country/Cities'}/${id}`);
+ } 
+
+ GetPostalCodesbyCityId(id) :Observable<PostalCode[]>{
+  return this.http.get<PostalCode[]>(`${this.url+ '/Country/PostalCodes'}/${id}`);
+} 
+
+
+GetStreetsbyPostalCodeId(id) :Observable<PostalCode[]>{
+  return this.http.get<PostalCode[]>(`${this.url+ '/Country/Streets'}/${id}`);
+} 
+
+
+GetHousesbyStreetId(id) :Observable<PostalCode[]>{
+  return this.http.get<PostalCode[]>(`${this.url+ '/Country/Houses'}/${id}`);
+} 
+
+
+
 }  
 

@@ -58,9 +58,9 @@ export class UploadComponent implements OnInit {
       let formData = new FormData();  
       var data =this.fileInput.nativeElement.files[0];
       formData.append('file',data)  
-      this.apiService.UploadCountryCsv  (formData).subscribe(result => {
+      this.apiService.UploadCountryCsv  (formData).subscribe(res => {
         this.fileInput.nativeElement.value='';
-        this.messageService.add({severity:'success', summary: 'file is uploaded successully', detail:'file uploaded'});  
+        this.messageService.add({severity:'success', summary:res+' '+ 'records are uploaded '});  
         this.GetCountries();   
       },
        error =>{
@@ -72,6 +72,7 @@ export class UploadComponent implements OnInit {
 
   GetCountries(){
     
+    this.country=[];
     this.apiService.GetCountries().subscribe(res=>{
       this.country=res;
       this.CountryItems = [];
@@ -100,9 +101,8 @@ export class UploadComponent implements OnInit {
 
   GetStates(){
     
+    this.StateItems = [];
     this.apiService.GetStates().subscribe(res=>{
-   
-      this.StateItems = [];
       let i = 0;
 
       setTimeout(() => {
@@ -127,16 +127,15 @@ export class UploadComponent implements OnInit {
   }
 
   GetCities(){
-    
+    this.CityItems = [];
     this.apiService.GetCities().subscribe(res=>{
-     this.CityItems = [];
-      let i = 0;
+       let i = 0;
       setTimeout(() => {
         for (var v in res) 
         {
             this.CityItems.push({
             label: res[i].Name,
-            value: res[i].StateId,
+            value: res[i].CityId,
           });
           i = i + 1;
     
@@ -152,10 +151,9 @@ export class UploadComponent implements OnInit {
   }
 
   GetPostcalCodes(){
-    
+    this.PostalCodeItems = [];
     this.apiService.GetPostalCodes().subscribe(res=>{
-     this.PostalCodeItems = [];
-      let i = 0;
+       let i = 0;
       setTimeout(() => {
         for (var v in res) 
         {
@@ -176,9 +174,8 @@ export class UploadComponent implements OnInit {
   
   }
   GetStreets(){
-    
+    this.StreetItems = [];
     this.apiService.GetStreets().subscribe(res=>{
-     this.StreetItems = [];
       let i = 0;
       setTimeout(() => {
         for (var v in res) 
@@ -211,11 +208,11 @@ export class UploadComponent implements OnInit {
     else{
       let formData = new FormData();  
       var data =this.fileInputStates.nativeElement.files[0];
-
       formData.append('file',data)  
-      this.apiService.UploadStateCsv (formData,this.SelectedCountryId).subscribe(result => {
+      this.apiService.UploadStateCsv (formData,this.SelectedCountryId).subscribe(res => {
         this.fileInputStates.nativeElement.value='';
-        this.messageService.add({severity:'success', summary: 'file is uploaded successully', detail:'file uploaded'});  
+        this.GetStates();
+        this.messageService.add({severity:'success', summary:res+' '+ 'records are uploaded '});  
          },
        error =>{
     });
@@ -224,16 +221,17 @@ export class UploadComponent implements OnInit {
   uploadFileCities(){
     if(this.fileInputCities.nativeElement.value ==null || this.fileInputCities.nativeElement.value ===''
     || this.fileInputCities.nativeElement.value===undefined  || this.SelectedStateId===''){
-      this.messageService.add({severity:'success', summary: 'add file and select', detail:'please add city csv and select state '});  
+      this.messageService.add({severity:'error', summary: 'add file and select', detail:'please add city csv and select state '});  
     }
     else{
       let formData = new FormData();  
       var data =this.fileInputCities.nativeElement.files[0];
 
       formData.append('file',data)  
-      this.apiService.UploadCityCsv(formData,this.SelectedStateId).subscribe(result => {
+      this.apiService.UploadCityCsv(formData,this.SelectedStateId).subscribe(res => {
         this.fileInputCities.nativeElement.value='';
-        this.messageService.add({severity:'success', summary: 'file is uploaded successully', detail:'file uploaded'});  
+        this.GetCities();
+        this.messageService.add({severity:'success', summary:res+' '+ 'records are uploaded '});  
          },
        error =>{
 
@@ -251,9 +249,10 @@ export class UploadComponent implements OnInit {
       var data =this.fileInputPostalCodes.nativeElement.files[0];
 
       formData.append('file',data)  
-      this.apiService.UploadPostalCodesCsv(formData,this.SelectedCityId).subscribe(result => {
+      this.apiService.UploadPostalCodesCsv(formData,this.SelectedCityId).subscribe(res => {
         this.fileInputPostalCodes.nativeElement.value='';
-        this.messageService.add({severity:'success', summary: 'file is uploaded successully', detail:'file uploaded'});  
+        this.GetPostcalCodes();
+        this.messageService.add({severity:'success', summary:res+' '+ 'records are uploaded '});  
          },
        error =>{
 
@@ -273,9 +272,10 @@ export class UploadComponent implements OnInit {
       var data =this.fileInputStreets.nativeElement.files[0];
 
       formData.append('file',data)  
-      this.apiService.UploadStreetsCsv(formData,this.SelectedPostalCodeId).subscribe(result => {
+      this.apiService.UploadStreetsCsv(formData,this.SelectedPostalCodeId).subscribe(res => {
         this.fileInputStreets.nativeElement.value='';
-        this.messageService.add({severity:'success', summary: 'file is uploaded successully', detail:'file uploaded'});  
+        this.GetStreets();
+        this.messageService.add({severity:'success', summary:res+' '+ 'records are uploaded '});  
          },
        error =>{
 
@@ -295,9 +295,9 @@ export class UploadComponent implements OnInit {
       var data =this.fileInputHouses.nativeElement.files[0];
 
       formData.append('file',data)  
-      this.apiService.UploadHousesCsv(formData,this.SelectedStreetId).subscribe(result => {
+      this.apiService.UploadHousesCsv(formData,this.SelectedStreetId).subscribe(res => {
         this.fileInputHouses.nativeElement.value='';
-        this.messageService.add({severity:'success', summary: 'file is uploaded successully', detail:'file uploaded'});  
+        this.messageService.add({severity:'success', summary:res+' '+ 'records are uploaded '});  
          },
        error =>{
 

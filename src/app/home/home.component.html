@@ -1,25 +1,178 @@
-
 <div class="container-fluid my-3">
 
-    <button class="btn btn-primary" (click)="GetCountries()"> Get Countries</button>
 
 
-    <div class="row mt-4">  
-       
-        <div class="col-md-4">
-                <div class="form-group">
-                    <label for="">Get State CSV File</label>  <br>
-                <p-dropdown [options]="CountryItems" [(ngModel)]="SelectedCountryId" autoWidth="false" [style]="{'width':'100%'}"  required filter="true" placeholder="Select Country">
-                    <ng-template let-item pTemplate="selectedItem">
-                        <span style="vertical-align:middle; margin-left: .5em">{{item.label}}</span>
-                    </ng-template>
-                    
-                </p-dropdown>  
+    <div class="row">
+        <div class="col-md-6">  <div class="card m-2">
+            <div class="card-header">
+                Get Counries Csv File
             </div>
-        </div> 
-        <div class="col-md-2">  
-            <br>
-            <button class="btn btn-primary" style="margin-top: 0.5em;"  (click)="GetFileStates();">Get States csv File</button>  
-        </div>  
-    </div> 
+            <div class="card-body">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <button class="btn btn-primary btn-block" (click)="GetCountries()"> Get Countries</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div></div>
+        <div class="col-md-6">
+             <!-- States -->
+             <div class="card mx-2 mt-3">
+                <div class="card-header">
+                    Get States Csv File
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p-dropdown [options]="CountryItems" [(ngModel)]="SelectedCountryId" autoWidth="false"
+                                [style]="{'width':'100%'}" required filter="true" placeholder="Select Country">
+                                <ng-template let-item pTemplate="selectedItem">
+                                    <span style="vertical-align:middle; margin-left: .5em">{{item.label}}</span>
+                                </ng-template>
+
+                            </p-dropdown>
+                        </div>
+                        <div class="col-md-6">
+
+                            <button class="btn btn-primary btn-block" (click)="GetFileStates();">Get States Csv
+                                File</button>
+
+                        </div>
+                    </div>
+
+                </div>
+
+           </div>
+             
+        </div>
+    </div>
+
+
+    
+    <div class="row">
+        <div class="col-md-6">
+             <!-- Cities -->
+            <div class="card mx-2 mt-3">
+                <div class="card-header">
+                    Get Cities Csv File
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p-dropdown [options]="StateItems" [(ngModel)]="SelectedStateId" autoWidth="false"
+                                [style]="{'width':'100%'}" required filter="true" placeholder="Select State">
+                                <ng-template let-item pTemplate="selectedItem">
+                                    <span style="vertical-align:middle; margin-left: .5em">{{item.label}}</span>
+                                </ng-template>
+
+                            </p-dropdown>
+                        </div>
+                        <div class="col-md-6">
+
+                            <button class="btn btn-primary btn-block" (click)="GetFileCities();">Get Cities Csv
+                                File</button>
+
+                        </div>
+                    </div>
+
+                </div>
+
+           </div>
+        </div>
+        <div class="col-md-6">
+           <!-- Postal Codes -->
+           <div class="card mx-2 mt-3">
+            <div class="card-header">
+                Get Postal Codes Csv File
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p-dropdown [options]="CityItems" [(ngModel)]="SelectedCityId" autoWidth="false"
+                            [style]="{'width':'100%'}" required filter="true" placeholder="Select City">
+                            <ng-template let-item pTemplate="selectedItem">
+                                <span style="vertical-align:middle; margin-left: .5em">{{item.label}}</span>
+                            </ng-template>
+
+                        </p-dropdown>
+                    </div>
+                    <div class="col-md-6">
+
+                        <button class="btn btn-primary btn-block" (click)="GetFilePostalCodes();">Get Postal Codes Csv
+                            File</button>
+
+                    </div>
+                </div>
+
+            </div>
+
+       </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6">
+             <!-- Streets -->
+            <div class="card mx-2 mt-3">
+                <div class="card-header">
+                    Get Streets Csv File
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p-dropdown [options]="PostalCodeItems" [(ngModel)]="SelectedPostalCodeId" autoWidth="false"
+                                [style]="{'width':'100%'}" required filter="true" placeholder="Select Postal Code">
+                                <ng-template let-item pTemplate="selectedItem">
+                                    <span style="vertical-align:middle; margin-left: .5em">{{item.label}}</span>
+                                </ng-template>
+
+                            </p-dropdown>
+                        </div>
+                        <div class="col-md-6">
+
+                            <button class="btn btn-primary btn-block" (click)="GetFileStreets();">Get Streets Csv
+                                File</button>
+
+                        </div>
+                    </div>
+
+                </div>
+
+           </div>
+        </div>
+        <div class="col-md-6">
+           <!-- Houses -->
+           <div class="card mx-2 mt-3">
+            <div class="card-header">
+                Get Postal Codes Csv File
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p-dropdown [options]="StreetItems" [(ngModel)]="SelectedStreetId" autoWidth="false"
+                            [style]="{'width':'100%'}" required filter="true" placeholder="Select Street">
+                            <ng-template let-item pTemplate="selectedItem">
+                                <span style="vertical-align:middle; margin-left: .5em">{{item.label}}</span>
+                            </ng-template>
+
+                        </p-dropdown>
+                    </div>
+                    <div class="col-md-6">
+
+                        <button class="btn btn-primary btn-block" (click)="GetFileHouses();">Get Houses Csv
+                            File</button>
+
+                    </div>
+                </div>
+
+            </div>
+
+       </div>
+        </div>
+    </div>
+
 </div>
